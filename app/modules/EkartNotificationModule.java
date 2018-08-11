@@ -3,6 +3,8 @@ package modules;
 import com.google.inject.AbstractModule;
 import com.typesafe.config.Config;
 import play.Environment;
+import services.IMail;
+import services.implementations.MailNotification;
 
 import javax.inject.Inject;
 
@@ -23,6 +25,6 @@ public class EkartNotificationModule extends AbstractModule {
 
     @Override
     protected void configure() {
-
+        this.bind(IMail.class).to(MailNotification.class);
     }
 }
