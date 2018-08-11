@@ -45,22 +45,21 @@ public class MailNotification implements IMail {
     }
 
     @Override
-    public void sendSimpleMail() {
+    public void sendSimpleMail(String subject, String message, String email) {
         try {
+            logger.info("Sending email with subject : {}, to emaild : {} ", subject, email);
             simpleEmail = sendSimpleEmail();
-            simpleEmail.setFrom("ekartv2.play@gmail.com","Ekartv2 Admin");
-            simpleEmail.setSubject("TestMail");
-            simpleEmail.setMsg("This is a test mail ... :-)");
-            simpleEmail.addTo("kdheeraj4995@gmail.com","Dheeraj Reddy");
-            String a = simpleEmail.send();
-            logger.info("Mail Sent"+a);
+            simpleEmail.setFrom(username, "Ekartv2 Admin");
+            simpleEmail.setSubject(subject);
+            simpleEmail.setMsg(message);
+            simpleEmail.addTo(email);
+            simpleEmail.send();
         } catch (EmailException e) {
-            logger.error(e.getMessage());
+            logger.error("Exception while sending email to email id : {}, reason : {}", email, e.getMessage());
         }
-
     }
 
-    private Email sendSimpleEmail(){
+    private Email sendSimpleEmail() {
         Email email = new SimpleEmail();
         email.setAuthentication(username, password);
         email.setHostName(hostname);

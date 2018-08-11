@@ -14,5 +14,9 @@ public class Constants {
         public final static int SERVER_ERROR = 500;
     }
 
+    public class MailMessages {
+
+    }
+
 
 }

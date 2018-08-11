@@ -1,4 +1,4 @@
 # An example controller showing a sample home page
-GET        /notification             controllers.EkartNotification.index
-GET        /notification/mail        controllers.EmailController.sendSimpleEmail
+GET         /notification             controllers.EkartNotification.index
+POST        /notification/mail        controllers.EmailController.sendSimpleEmail
 

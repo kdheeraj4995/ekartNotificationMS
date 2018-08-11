@@ -5,5 +5,5 @@ package services;
  */
 
 public interface IMail {
-    public void sendSimpleMail();
+    public void sendSimpleMail(String subject, String message, String email);
 }
