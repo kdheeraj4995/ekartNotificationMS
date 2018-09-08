@@ -1,5 +1,4 @@
 # An example controller showing a sample home page
 GET         /notification             com.dheeraj.security.controllers.InfoController.aboutMe
-GET         /notification/about             com.dheeraj.security.controllers.InfoController.aboutMe
 POST        /notification/mail        controllers.EmailController.sendSimpleEmail
 

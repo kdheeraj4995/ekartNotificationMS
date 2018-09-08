@@ -1,5 +1,7 @@
 package controllers;
 
+import com.dheeraj.security.annotations.EkartAuthenticator;
+import com.dheeraj.security.models.EkartTokenType;
 import com.dheeraj.utility.helper.JsonHelper;
 import com.dheeraj.utility.helper.Response;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -25,6 +27,7 @@ public class EmailController extends Controller {
         this.mailService = mailService;
     }
 
+    @EkartAuthenticator(EkartTokenType.SERVER)
     public Result sendSimpleEmail() {
         try {
             JsonNode mail = request().body().asJson();
@@ -35,10 +38,10 @@ public class EmailController extends Controller {
             mailService.sendSimpleMail(subject, message, email);
             return Response.okAsJSON("Processing email, usually it takes a few mins to send the email");
         } catch (IllegalArgumentException e) {
-            logger.warn("Illegal Argument in email body reason: {}",e.getMessage());
+            logger.warn("Illegal Argument in email body reason: {}", e.getMessage());
             return Response.errorAsJSON("Invalid email content reason : " + e.getMessage());
         } catch (Exception e) {
-            logger.error("Error while sending email reason : {}",e.getMessage());
+            logger.error("Error while sending email reason : {}", e.getMessage());
             return Response.errorAsJSON("Error while sending email , please try after some time");
         }
     }
