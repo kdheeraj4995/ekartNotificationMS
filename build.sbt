@@ -5,6 +5,9 @@ version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
+PlayKeys.devSettings := Seq("play.server.http.port" -> "9002")
+
+
 scalaVersion := "2.12.4"
 
 libraryDependencies ++= Seq(
