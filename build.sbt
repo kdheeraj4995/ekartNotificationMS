@@ -3,7 +3,7 @@ organization := "com.dheeraj"
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava)
+lazy val root = (project in file(".")).enablePlugins(PlayJava).disablePlugins(PlayFilters)
 
 PlayKeys.devSettings := Seq("play.server.http.port" -> "9002")
 
